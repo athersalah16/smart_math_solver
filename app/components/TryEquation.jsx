@@ -19,7 +19,7 @@ function TryEquation() {
       {equations.map((eq, index) => (
         <div
             onClick={() => setEquation(eq.equa)}
-          className=" flex hover:bg-linear-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600   mt-4 cursor-pointer items-center flex-row bg-linear-to-br from-blue-100 to-purple-100 w-full h-12 text-black  rounded-xl "
+          className=" flex hover:bg-linear-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600   duration-300 transition-colors mt-4 cursor-pointer items-center flex-row bg-linear-to-br from-blue-100 to-purple-100 w-full h-12 text-black  rounded-xl "
           key={index}
         >
           <div className=" ml-4 w-8 h-8  

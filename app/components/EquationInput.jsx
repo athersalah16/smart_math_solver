@@ -4,7 +4,7 @@ import DisplaySolution from "./DisplaySolution";
 function EquationInput() {
   const { equation, setEquation, runAI, solution, loading } = useEquation();
   return (
-    <div className="w-full flex flex-col mt-3">
+    <div className="w-full justify-center items-center flex flex-col mt-3">
       <div>
         <h2 className="text-black font-bold">Enter your math problem</h2>
       </div>

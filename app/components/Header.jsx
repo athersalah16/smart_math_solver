@@ -11,8 +11,7 @@ function Header() {
   const navItems = [
     { label: "Home", link: "/", icon: faHouse },
     { label: "Practice", link: "/practice", icon: faBookOpen },
-    { label: "History", link: "/history", icon: faClockRotateLeft },
-    { label: "Profile", link: "/profile", icon: faUser },
+   
   ];
 
   return (
