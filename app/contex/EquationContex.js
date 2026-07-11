@@ -34,7 +34,7 @@ function EquationProvider({ children }) {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH}`,
+              Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
             },
             body: JSON.stringify({
               model: "gpt-4.1",
