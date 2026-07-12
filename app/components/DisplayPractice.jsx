@@ -1,5 +1,5 @@
 "use client";
-import { useEffect ,useState} from "react";
+import { useEffect, useState } from "react";
 import { useEquation } from "../contex/EquationContex";
 import { getTheQuestion } from "../helper_funcs/getTheQuestion";
 
@@ -11,6 +11,8 @@ function DisplayPractice() {
     loading,
     difficulty,
     runAI,
+    setError,
+    error,
   } = useEquation();
   const [question, setQuestion] = useState(null);
 
@@ -34,13 +36,21 @@ function DisplayPractice() {
       />
       <button
         disabled={!studentAnswer.trim()}
-        onClick={() => runAI("check", question)}
+        onClick={() => {
+          if (!Number(studentAnswer)) {
+            setError("Please Enter Numbers only");
+            return;
+          }
+          runAI("check", question);
+          setError("")
+        }}
         className={`
-        
-        ${studentAnswer.trim() ? "w-[600px] ml-4  h-10 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-lg mt-4 hover:opacity-90" : "bg-gray-400 mt-4 h-12 rounded-lg  cursor-not-allowed w-[600px] ml-4"}`}
+        flex justify-center items-center cursor-pointer
+        ${studentAnswer.trim() ? " w-[600px] ml-4  h-10 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-lg mt-4 hover:opacity-90" : "bg-gray-400 mt-4 h-12 rounded-lg  cursor-not-allowed w-[600px] ml-4"}`}
       >
         {loading ? "Checking..." : "Check Answer"}
       </button>
+      {error && <p className=" px-3 text-lg py-3 text-red-500">{error}</p>}
     </div>
   );
 }

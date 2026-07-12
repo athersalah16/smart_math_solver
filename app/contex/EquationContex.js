@@ -5,10 +5,11 @@ import {
   solveEquationPrompt,
 } from "./../helper_funcs/prompts";
 import validateAIData from "./../helper_funcs/validateAIData";
-import {practiceProblems} from "../helper_funcs/practiceProblems";
+import { practiceProblems } from "../helper_funcs/practiceProblems";
 const EquationContex = createContext([]);
 function EquationProvider({ children }) {
   const [equation, setEquation] = useState("");
+  const [error, setError] = useState("");
   const [question, setQuestion] = useState("");
   const [mode, setMode] = useState("");
   const [solution, setSolution] = useState(null);
@@ -16,7 +17,7 @@ function EquationProvider({ children }) {
   const [studentAnswer, setStudentAnswer] = useState("");
   const [loading, setLoading] = useState(false);
   const [difficulty, setDifficulty] = useState(0);
- 
+
   const runAI = (type, equa) => {
     if (!equa.trim()) return;
 
@@ -29,15 +30,15 @@ function EquationProvider({ children }) {
       setLoading(true);
       try {
         const response = await fetch(
-          "https://api.openai.com/v1/chat/completions",
+          "https://api.groq.com/openai/v1/chat/completions",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_GROQ_API_KEY}`,
             },
             body: JSON.stringify({
-              model: "gpt-4.1",
+              model: "openai/gpt-oss-120b",
               messages: [
                 {
                   role: "user",
@@ -51,7 +52,7 @@ function EquationProvider({ children }) {
           },
         );
         const responseData = await response.json();
-console.log(responseData)
+        // console.log(responseData);
         const result = JSON.parse(responseData.choices[0].message.content);
 
         if (mode === "check") {
@@ -63,7 +64,7 @@ console.log(responseData)
 
         setLoading(false);
       } catch (err) {
-        console.log(err);
+        setError(err);
         setLoading(false);
       }
     };
@@ -88,6 +89,8 @@ console.log(responseData)
         practiceProblems,
         difficulty,
         setDifficulty,
+        error,
+        setError
       }}
     >
       {children}
@@ -102,4 +105,3 @@ function useEquation() {
 
 export { useEquation, EquationProvider };
 
-//

@@ -3,7 +3,7 @@ import { useEquation } from "../contex/EquationContex";
 import CorrectAnswer from "./CorrectAnswer";
 import FalseAnswer from "./FalseAnswer";
 function CheckAnswerCon() {
-  const { userSolution, setStudentAnswer, setDifficulty, setUserSolution } =
+  const { userSolution, setStudentAnswer, setDifficulty, setUserSolution ,setError} =
     useEquation();
   const handleNextQuestion = () => {
     if (userSolution.correct) {
