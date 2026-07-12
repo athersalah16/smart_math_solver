@@ -38,7 +38,7 @@ function EquationProvider({ children }) {
           }),
         });
         const data = await response.json();
-        console.log(data)
+        if (data.error) setError(data.error);
         if (mode === "check") {
           const validateAIDataResult = validateAIData(data, studentAnswer);
           setUserSolution(validateAIDataResult);
