@@ -1,9 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import {
-  checkAnswerPrompt,
-  solveEquationPrompt,
-} from "./../helper_funcs/prompts";
+
 import validateAIData from "./../helper_funcs/validateAIData";
 import { practiceProblems } from "../helper_funcs/practiceProblems";
 const EquationContex = createContext([]);
@@ -29,37 +26,24 @@ function EquationProvider({ children }) {
       if (!question.trim()) return;
       setLoading(true);
       try {
-        const response = await fetch(
-          "https://api.groq.com/openai/v1/chat/completions",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${process.env.NEXT_PUBLIC_GROQ_API_KEY}`,
-            },
-            body: JSON.stringify({
-              model: "openai/gpt-oss-120b",
-              messages: [
-                {
-                  role: "user",
-                  content:
-                    mode === "check"
-                      ? checkAnswerPrompt(question, studentAnswer)
-                      : solveEquationPrompt(question),
-                },
-              ],
-            }),
+        const response = await fetch("/api/solve", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        );
-        const responseData = await response.json();
-        // console.log(responseData);
-        const result = JSON.parse(responseData.choices[0].message.content);
-
+          body: JSON.stringify({
+            mode,
+            question,
+            studentAnswer,
+          }),
+        });
+        const data = await response.json();
+        console.log(data)
         if (mode === "check") {
-          const validateAIDataResult = validateAIData(result, studentAnswer);
+          const validateAIDataResult = validateAIData(data, studentAnswer);
           setUserSolution(validateAIDataResult);
         } else {
-          setSolution(result);
+          setSolution(data);
         }
 
         setLoading(false);
@@ -90,7 +74,7 @@ function EquationProvider({ children }) {
         difficulty,
         setDifficulty,
         error,
-        setError
+        setError,
       }}
     >
       {children}
@@ -104,4 +88,3 @@ function useEquation() {
 }
 
 export { useEquation, EquationProvider };
-
