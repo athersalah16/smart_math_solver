@@ -29,7 +29,10 @@ export async function POST(req) {
       },
     );
     const responseData = await response.json();
+    
     const result = JSON.parse(responseData.choices[0].message.content);
+    console.log("Groq Response:", result);
+
     return NextResponse.json(result);
   } catch (err) {
     return NextResponse.json(
