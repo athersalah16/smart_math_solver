@@ -34,7 +34,7 @@ function EquationProvider({ children }) {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
             },
             body: JSON.stringify({
               model: "gpt-4.1",
@@ -51,8 +51,9 @@ function EquationProvider({ children }) {
           },
         );
         const responseData = await response.json();
-
+console.log(responseData)
         const result = JSON.parse(responseData.choices[0].message.content);
+
         if (mode === "check") {
           const validateAIDataResult = validateAIData(result, studentAnswer);
           setUserSolution(validateAIDataResult);
