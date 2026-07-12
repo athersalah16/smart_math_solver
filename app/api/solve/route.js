@@ -30,8 +30,11 @@ export async function POST(req) {
     );
     const responseData = await response.json();
     const result = JSON.parse(responseData.choices[0].message.content);
+    console.log(result)
     return NextResponse.json(result);
   } catch (err) {
+          console.log(err)
+
     return NextResponse.json(
       {
         error: "Internal Server Error",
