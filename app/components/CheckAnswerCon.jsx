@@ -16,7 +16,7 @@ function CheckAnswerCon() {
   };
   const nextBtnStyle = `bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-md mt-4  transition duration-300 outline-none focus:outline-none `;
   return (
-    <div>
+    <div className="flex justify-center">
       {userSolution ? (
         userSolution.correct ? (
           <CorrectAnswer solution={userSolution}>

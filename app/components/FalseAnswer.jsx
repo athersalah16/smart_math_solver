@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function FalseAnswer({ children, solution }) {
   return (
-    <div className="w-[800px] h-[300px] bg-red-100 border border-red-400 rounded-lg mt-3  px-3 flex flex-col text-lg font-bold text-red-600">
+    <div className="md:w-[800px] md:h-[200px] w-80 h-64 bg-red-100 border border-red-400 rounded-lg mt-3  px-3 flex flex-col text-lg font-bold text-red-600">
       <div className="flex flex-row mt-3">
         {" "}
         <FontAwesomeIcon icon={faX} className="text-2xl " />

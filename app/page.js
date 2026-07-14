@@ -13,7 +13,7 @@ export default function Home() {
         <p className="text-center mt-4 text-xl mb-2 text-black">
           Get step-by-step solutions to any math problem with our advanced AI <br></br> technology
         </p>
-        <div className='w-[1000px] h-[250px] bg-gray-200  mx-auto p-6 rounded-2xl'>
+        <div className='md:w-250 h-52 md:h-64  w-125 bg-gray-200  mx-auto p-6 rounded-2xl'>
         <EquationInput />
          <TryEquation />
      

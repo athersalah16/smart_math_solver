@@ -15,7 +15,7 @@ function TryEquation() {
       <h1 className="text-2xl font-semibold text-black">
         Try these example problems
       </h1>
-      <div className=" w-full grid grid-cols-2 gap-4  mr-3 mt-4">
+      <div className=" w-full flex flex-col   md:grid md:grid-cols-2 gap-4  mr-3 mt-4">
       {equations.map((eq, index) => (
         <div
             onClick={() => setEquation(eq.equa)}

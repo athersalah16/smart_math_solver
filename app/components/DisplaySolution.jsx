@@ -1,7 +1,7 @@
 function DisplaySolution({ solution }) {
   return (
     <div className="w-full grid grid-cols-1 mt-6 gap-4">
-     <h2 className="text-black font-bold">Solution Steps:</h2>
+     <h2 className="text-black mt-2.5 font-bold">Solution Steps:</h2>
       <div>
         {solution?.steps?.map((step, index) => (
           <div key={index} className="p-4 rounded-xl mt-1 border bg-gray-50 space-y-2">

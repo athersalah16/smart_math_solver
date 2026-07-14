@@ -21,9 +21,9 @@ function DisplayPractice() {
     setQuestion(question);
   }, [difficulty]);
   return (
-    <div className=" w-[800px] h-[250px] bg-white  rounded-lg  flex flex-col mt-3">
+    <div className=" w-96 h-52 md:w-[800px] md:h-[250px] bg-white  rounded-lg  flex flex-col mt-3">
       <p className="text-xl ml-4 cursor-text">Question</p>
-      <div className="w-[600px] h-12 ml-4 mt-2  bg-purple-600 rounded-lg flex items-center justify-center text-2xl font-bold text-white">
+      <div className="md:w-[600px] w-96 h-12 ml-4 mt-2  bg-purple-600 rounded-lg flex items-center justify-center text-2xl font-bold text-white">
         {question}
       </div>
       <p className="text-xl ml-4 mt-4 cursor-text">Answer</p>
@@ -32,7 +32,7 @@ function DisplayPractice() {
         value={studentAnswer}
         onChange={(e) => setStudentAnswer(e.target.value)}
         placeholder="Type your answer here..."
-        className="w-[600px] focus:shadow-md ml-4 focus:outline-none rounded-md h-8 p-3 bg-gray-200"
+        className="md:w-[600px] w-96 focus:shadow-md ml-4 focus:outline-none rounded-md h-8 p-3 bg-gray-200"
       />
       <button
         disabled={!studentAnswer.trim()}
@@ -46,7 +46,7 @@ function DisplayPractice() {
         }}
         className={`
         flex justify-center items-center cursor-pointer
-        ${studentAnswer.trim() ? " w-[600px] ml-4  h-10 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-lg mt-4 hover:opacity-90" : "bg-gray-400 mt-4 h-12 rounded-lg  cursor-not-allowed w-[600px] ml-4"}`}
+        ${studentAnswer.trim() ? " md:w-[600px] w-96 ml-4  h-10 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-lg mt-4 hover:opacity-90" : "bg-gray-400 mt-4 h-12 rounded-lg  cursor-not-allowed w-96 md:w-[600px] ml-4"}`}
       >
         {loading ? "Checking..." : "Check Answer"}
       </button>

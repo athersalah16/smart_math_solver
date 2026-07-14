@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CorrectAnswer({ children, solution }) {
   return (
-    <div className="w-[800px] h-[200px] bg-green-100 border border-green-400 rounded-lg mt-3  px-3 flex flex-col text-lg font-bold text-green-600">
+    <div className="md:w-[800px] md:h-[200px] w-80 h-64 bg-green-100 border border-green-400 rounded-lg mt-3  px-3 flex flex-col text-lg font-bold text-green-600">
       <div className="flex flex-row mt-3">
         {" "}
         <FontAwesomeIcon icon={faCheck} className="text-2xl" />{" "}
@@ -14,7 +14,6 @@ function CorrectAnswer({ children, solution }) {
         Explanation:
         <br></br>
         <p className="text-gray-800 mt-1">{solution?.formula} </p>
-        {/*  */}
       </div>
       {children}
     </div>

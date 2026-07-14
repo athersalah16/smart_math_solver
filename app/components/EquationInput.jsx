@@ -4,7 +4,7 @@ import DisplaySolution from "./DisplaySolution";
 function EquationInput() {
   const { equation, setEquation, runAI, solution, loading ,error} = useEquation();
   return (
-    <div className="w-full justify-center items-center flex flex-col mt-3">
+    <div className="w-full justify-center items-center flex flex-col ">
       <div>
         <h2 className="text-black font-bold">Enter your math problem</h2>
       </div>
@@ -12,7 +12,7 @@ function EquationInput() {
         value={equation}
         onChange={(e) => setEquation(e.target.value)}
         placeholder="Type your math problem here...(e.g., Solve for x: 2x + 5 = 13)"
-        className="border border-gray-300 rounded-md bg-white text-black ml-3 w-[800px] h-[100px] mt-2 py-2 px-4 focus:outline-none focus:shadow-lg focus:ring-2 focus:ring-gray-200"
+        className="border border-gray-300 rounded-md bg-white text-black ml-3 w-[400px] h-full  md:w-[800px] md:h-[100px] mt-2 py-2 px-4 focus:outline-none focus:shadow-lg focus:ring-2 focus:ring-gray-200"
       ></textarea>
       <button
       
